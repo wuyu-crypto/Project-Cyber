@@ -10,7 +10,6 @@
 #include "bg.h"
 #include "effect.h"
 #include "sound.h"
-#include "stop.h"
 #include "slow.h"
 #include "item.h"
 #include "waveController.h"

@@ -21,7 +21,6 @@
 #include "fade.h"
 #include "UI.h"
 #include "hpBar.h"
-#include "stop.h"
 #include "item.h"
 #include "slow.h"
 #include "icon.h"
@@ -71,8 +70,6 @@ char	g_DebugStr[2048] = WINDOW_NAME;		// デバッグ文字表示用
 int	g_Mode = MODE_TITLE;					// 起動時の画面を設定
 
 BOOL g_LoadGame = FALSE;					// NewGame
-
-BOOL g_StopEffect = FALSE;
 
 BOOL g_IsExit;			// EXIT画面フラグ
 BOOL g_IsCutin;			// CUTIN画面フラグ
@@ -386,10 +383,6 @@ void Update(void)
 			UpdateDamage();
 			break;
 
-		case MODE_GAME_STOP:		// ストップエフェクト
-			UpdateStop();
-			break;
-
 		case MODE_RESULT:		// リザルト画面の更新
 			UpdateResult();
 			UpdateEffect();
@@ -433,7 +426,6 @@ void Draw(void)
 		break;
 
 	case MODE_GAME:						// ゲーム画面の描画
-	case MODE_GAME_STOP:				// ストップエフェクト
 	case MODE_GAME_SLOW:				// スロー処理
 		DrawBG();
 		DrawEnemy();
@@ -520,7 +512,6 @@ void SetMode(int mode)
 	UninitBullet();
 	UninitItem();
 	UninitScore();
-	UninitStop();
 	UninitSlow();
 	UninitIcon();
 	UninitProgress();
@@ -557,7 +548,6 @@ void SetMode(int mode)
 		InitItem();
 		InitHPBar();
 		InitScore();
-		InitStop();
 		InitSlow();
 		InitIcon();
 		InitProgress();
