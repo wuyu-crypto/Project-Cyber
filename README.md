@@ -1,2 +1,1 @@
-# BandaiDemo
- For 12/07 Bandai Demonstration
+Ahthor: WUYU, HAL Tokyo
