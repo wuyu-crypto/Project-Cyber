@@ -211,7 +211,6 @@ static EFFECT_DATA g_EffectData[EFFECT_TYPE_MAX] = {
 static BOOL		g_Load = FALSE;										// 初期化を行ったかのフラグ
 static EFFECT	g_Effect[EFFECT_MAX];								// エフェクト構造体
 
-static bool isPadActive;
 //=============================================================================
 // 初期化処理
 //=============================================================================
@@ -247,8 +246,13 @@ HRESULT InitEffect(void)
 
 	// モードによりエフェクトをセット
 	if (GetMode() == MODE_TITLE) {
-		// 操作説明をセット
-		SetEffect(EFFECT_TYPE_MANUAL00, XMFLOAT3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * MANUAL_EFFECT_HEIGHT, 0.0f), EFFECT_LOOP_FOREVER);
+
+		// パッド有効化ならしない
+		if (!IsPadActive()) {
+			// 操作説明をセット
+			SetEffect(EFFECT_TYPE_MANUAL00, XMFLOAT3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * MANUAL_EFFECT_HEIGHT, 0.0f), EFFECT_LOOP_FOREVER);
+		}
+
 	}
 	else if (GetMode() == MODE_GAME) {
 		// BACKFIREエフェクトを有効化(0番目プレイヤーに対して)
@@ -257,18 +261,23 @@ HRESULT InitEffect(void)
 		SetEffect(EFFECT_TYPE_PLAYER_BACKGLOW, 0, EFFECT_LOOP_FOREVER);
 		// BACKPARTICLESを有効化
 		SetEffect(EFFECT_TYPE_PLAYER_BACKPARTICLES, 0, EFFECT_LOOP_FOREVER);
-		// 操作説明をセット
-		SetEffect(EFFECT_TYPE_MANUAL01, XMFLOAT3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * MANUAL_EFFECT_HEIGHT, 0.0f), 30.0f);	// 30秒間プレイ
+
+		// パッド有効化ならしない
+		if (!IsPadActive()) {
+			// 操作説明をセット
+			SetEffect(EFFECT_TYPE_MANUAL01, XMFLOAT3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * MANUAL_EFFECT_HEIGHT, 0.0f), 30.0f);	// 30秒間プレイ
+		}
 	}
 	else if (GetMode() == MODE_GAMEOVER || GetMode() == MODE_RESULT) {
-		// 操作説明をセット
-		SetEffect(EFFECT_TYPE_MANUAL02, XMFLOAT3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * MANUAL_EFFECT_HEIGHT, 0.0f), EFFECT_LOOP_FOREVER);
+
+		// パッド有効化ならしない
+		if (!IsPadActive()) {
+
+			// 操作説明をセット
+			SetEffect(EFFECT_TYPE_MANUAL02, XMFLOAT3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * MANUAL_EFFECT_HEIGHT, 0.0f), EFFECT_LOOP_FOREVER);
+		}
+
 	}
-
-
-
-
-	isPadActive = IsPadActive();
 
 
 
