@@ -94,12 +94,13 @@ void UninitExit(void)
 void UpdateExit(void)
 {
 	// “ü—Íˆ—
-	if (GetKeyboardTrigger(DIK_RETURN)) {
+	if (GetKeyboardTrigger(DIK_RETURN) || IsButtonTriggered(0, BUTTON_A)) {
+		int a = 0;
 		// ƒQ[ƒ€I—¹
 		EndGame();
 		return;
 	}
-	if (GetKeyboardTrigger(DIK_ESCAPE)) {
+	if (GetKeyboardTrigger(DIK_ESCAPE) || IsButtonTriggered(0, BUTTON_B) || IsButtonTriggered(0, BUTTON_X)) {
 		// EXIT‰æ–ÊI—¹
 		SetExit(FALSE);
 		PlaySound(SOUND_LABEL_SE_CANCEL);

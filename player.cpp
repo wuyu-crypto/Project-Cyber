@@ -223,13 +223,13 @@ void UpdatePlayer(void) {
 			float speed = g_Player[i].speed.x;
 
 			g_Player[i].animPattern = CHAR_DIR_FORWARD;		// デフォルトで前向きアニメーション
-			if (GetKeyboardPress(DIK_DOWN))
+			if (GetKeyboardPress(DIK_DOWN) || IsButtonPressed(0, BUTTON_DOWN))
 			{
 				g_Player[i].pos.y += speed;
 				g_Player[i].dirV = CHAR_DIR_DOWNWARD;
 				g_Player[i].animPattern = CHAR_DIR_DOWNWARD;
 			}
-			else if (GetKeyboardPress(DIK_UP))
+			else if (GetKeyboardPress(DIK_UP) || IsButtonPressed(0, BUTTON_UP))
 			{
 				g_Player[i].pos.y -= speed;
 				g_Player[i].dirV = CHAR_DIR_UPWARD;
@@ -239,12 +239,12 @@ void UpdatePlayer(void) {
 				g_Player[i].dirV = CHAR_DIR_FORWARD;
 			}
 
-			if (GetKeyboardPress(DIK_RIGHT))
+			if (GetKeyboardPress(DIK_RIGHT) || IsButtonPressed(0, BUTTON_RIGHT))
 			{
 				g_Player[i].pos.x += speed;
 				g_Player[i].dirH = CHAR_DIR_FORWARD;
 			}
-			else if (GetKeyboardPress(DIK_LEFT))
+			else if (GetKeyboardPress(DIK_LEFT) || IsButtonPressed(0, BUTTON_LEFT))
 			{
 				g_Player[i].pos.x -= speed;
 				g_Player[i].dirH = CHAR_DIR_BACKWARD;
@@ -342,7 +342,7 @@ void UpdatePlayer(void) {
 		if (g_Player[i].isPopped == FALSE) {
 
 			// 連射処理
-			if (GetKeyboardPress(DIK_SPACE)) {
+			if (GetKeyboardPress(DIK_SPACE) || IsButtonPressed(0, BUTTON_A)) {
 
 				// 連射判定
 				if (g_Player[i].shootCnt % SHOOT_INTERVAL == 0) {
@@ -476,7 +476,7 @@ void UpdatePlayer(void) {
 	if (g_IsDeadCnting == TRUE) {
 		g_DeadCnt++;
 		// 爆死カウントが終われば、か、ENTER押せば
-		if (g_DeadCnt >= g_DeadNum || GetKeyboardTrigger(DIK_RETURN)) {
+		if (g_DeadCnt >= g_DeadNum || GetKeyboardTrigger(DIK_RETURN) || IsButtonTriggered(0)) {
 			// シーンチェンジ
 			SetFade(FADE_OUT, MODE_GAMEOVER);
 		}

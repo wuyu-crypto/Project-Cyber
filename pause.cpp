@@ -23,6 +23,7 @@ enum {
 	TEXTURE_BACK_TO_TITLE,
 	TEXTURE_EXIT_GAME,
 	TEXTURE_MANUAL,
+	TEXTURE_MANUAL_PAD,
 
 	TEXTURE_MAX,
 };
@@ -49,6 +50,7 @@ static char* g_TexturName[TEXTURE_MAX] = {
 	"data/TEXTURE/pauseButton02.png",
 	"data/TEXTURE/pauseButton03.png",
 	"data/TEXTURE/manual.png",
+	"data/TEXTURE/manual_pad.png",
 };
 
 static BOOL		g_Load = FALSE;
@@ -59,6 +61,8 @@ static XMFLOAT3 g_DefaultPos;			// ボタン基準座標
 static XMFLOAT3 g_Pos[BUTTON_MAX];		// ボタン座標
 static XMFLOAT3 g_PosDiff;				// ボタン座標の間隔
 static float	g_Scale;				// アクティブボタンの拡大率
+
+static bool isPadActive;
 
 //=============================================================================
 // 初期化処理
@@ -109,6 +113,8 @@ HRESULT InitPause(void)
 	g_ButtonNow = 0;
 	g_Scale = 1.2f;
 
+	isPadActive = IsPadActive();
+
 	g_Load = TRUE;
 	return S_OK;
 }
@@ -144,17 +150,17 @@ void UninitPause(void)
 void UpdatePause(void)
 {
 	// ボタン入力
-	if (GetKeyboardTrigger(DIK_DOWN)) {
+	if (GetKeyboardTrigger(DIK_DOWN) || IsButtonTriggered(0, BUTTON_DOWN)) {
 		g_ButtonNow = (g_ButtonNow + 1) % BUTTON_MAX;
 		// ボタン移動音
 		PlaySound(SOUND_LABEL_SE_BUTTON_MOVE);
 	}
-	if (GetKeyboardTrigger(DIK_UP)) {
+	if (GetKeyboardTrigger(DIK_UP) || IsButtonTriggered(0, BUTTON_UP)) {
 		g_ButtonNow = (g_ButtonNow + BUTTON_MAX - 1) % BUTTON_MAX;
 		// ボタン移動音
 		PlaySound(SOUND_LABEL_SE_BUTTON_MOVE);
 	}
-	if (GetKeyboardTrigger(DIK_ESCAPE)) {
+	if (GetKeyboardTrigger(DIK_ESCAPE) || IsButtonTriggered(0, BUTTON_B)) {
 		// PAUSEを終了
 		SetPause(FALSE);
 		// 決定音
@@ -164,7 +170,7 @@ void UpdatePause(void)
 	}
 
 	// 画面遷移
-	if (GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE)) {
+	if (GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) || IsButtonTriggered(0, BUTTON_A)) {
 		switch (g_ButtonNow) {
 		case RESUME:
 			// PAUSEを終了
@@ -277,7 +283,12 @@ void DrawPause(void)
 	// MANUAL
 	{
 		// テクスチャ設定
-		GetDeviceContext()->PSSetShaderResources(0, 1, &g_Texture[TEXTURE_MANUAL]);
+		if (isPadActive) {
+			GetDeviceContext()->PSSetShaderResources(0, 1, &g_Texture[TEXTURE_MANUAL_PAD]);
+		}
+		else {
+			GetDeviceContext()->PSSetShaderResources(0, 1, &g_Texture[TEXTURE_MANUAL]);
+		}
 
 		SetSpriteLeftTop(g_VertexBuffer, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
 		// ポリゴン描画

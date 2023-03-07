@@ -226,7 +226,7 @@ void UninitWaveController(void) {
 void UpdateWaveController(void) {
 
 	// PAUSEèàóù
-	if (GetKeyboardTrigger(DIK_ESCAPE)) {
+	if (GetKeyboardTrigger(DIK_ESCAPE) || IsButtonPressed(0, BUTTON_X)) {
 		SetPause(TRUE);
 		PlaySound(SOUND_LABEL_SE_PAUSE);
 	}

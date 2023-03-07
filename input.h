@@ -50,9 +50,9 @@
 
 enum {	// ƒ{ƒ^ƒ“‚É‘Î‚·‚érgbButtons[?]”z—ñ‚Ì”z—ñ”Ô†(DirectInputã‚Å‚ÌXYABƒ{ƒ^ƒ“ˆÊ’u‚É‡‚í‚¹‚½)
 	rgbButtons_X,
+	rgbButtons_Y,
 	rgbButtons_A,
 	rgbButtons_B,
-	rgbButtons_Y,
 	rgbButtons_L,
 	rgbButtons_R,
 	rgbButtons_L2,
@@ -61,6 +61,18 @@ enum {	// ƒ{ƒ^ƒ“‚É‘Î‚·‚érgbButtons[?]”z—ñ‚Ì”z—ñ”Ô†(DirectInputã‚Å‚ÌXYABƒ{ƒ^ƒ“ˆ
 	rgbButtons_START,
 };
 
+//enum {	// ƒ{ƒ^ƒ“‚É‘Î‚·‚érgbButtons[?]”z—ñ‚Ì”z—ñ”Ô†(DirectInputã‚Å‚ÌXYABƒ{ƒ^ƒ“ˆÊ’u‚É‡‚í‚¹‚½)
+//	rgbButtons_X,
+//	rgbButtons_A,
+//	rgbButtons_B,
+//	rgbButtons_Y,
+//	rgbButtons_L,
+//	rgbButtons_R,
+//	rgbButtons_L2,
+//	rgbButtons_R2,
+//	rgbButtons_SELECT,
+//	rgbButtons_START,
+//};
 
 
 //*****************************************************************************
@@ -89,6 +101,15 @@ long GetMouseZ(void);               // ƒ}ƒEƒXƒzƒC[ƒ‹‚ª“®‚¢‚½‘Š‘Î’l
 
 //---------------------------- game pad
 BOOL IsButtonPressed(int padNo,DWORD button);
+
+/*
+* @brief ”CˆÓ‚Ìƒ{ƒ^ƒ“‚ğƒgƒŠƒK[
+*/
+BOOL IsButtonTriggered(int padNo);
+
 BOOL IsButtonTriggered(int padNo,DWORD button);
 
-
+/*
+* @brief ƒpƒbƒh—LŒø‰»’†‚©ƒ`ƒFƒbƒN
+*/
+bool IsPadActive(void);

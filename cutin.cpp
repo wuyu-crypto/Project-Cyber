@@ -164,7 +164,7 @@ void UninitCutin(void)
 void UpdateCutin(void)
 {
 	// スキップ
-	if (GetKeyboardTrigger(DIK_RETURN)) {
+	if (GetKeyboardTrigger(DIK_RETURN) || IsButtonTriggered(0, BUTTON_A)) {
 		StopCutin();
 		return;
 	}

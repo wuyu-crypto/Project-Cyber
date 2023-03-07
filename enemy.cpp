@@ -398,7 +398,7 @@ void UpdateEnemy(void)
 				XMStoreFloat3(&g_SinkingPos, xmvVec + xmvPos);
 
 				if (g_BossMovingCnt >= g_BossActionFrame[BOSS_SINKING] ||
-					GetKeyboardTrigger(DIK_RETURN)) {	// ENTERキーでスキップ
+					GetKeyboardTrigger(DIK_RETURN) || IsButtonTriggered(0)) {	// ENTERキーでスキップ
 					// ボスを消す
 					g_Enemy[i].isActive = FALSE;
 					//リザルトモードへ

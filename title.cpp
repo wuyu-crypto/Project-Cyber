@@ -195,11 +195,11 @@ void UpdateTitle(void)
 	if (g_IsCreditsActive == TRUE) {
 
 		// スクロール処理
-		if (GetKeyboardPress(DIK_DOWN))
+		if (GetKeyboardPress(DIK_DOWN) || IsButtonPressed(0, BUTTON_DOWN))
 		{
 			g_CreditsWindowY += g_CreditsScrl;
 		}
-		else if (GetKeyboardPress(DIK_UP))
+		else if (GetKeyboardPress(DIK_UP) || IsButtonPressed(0, BUTTON_UP))
 		{
 			g_CreditsWindowY -= g_CreditsScrl;
 		}
@@ -214,7 +214,7 @@ void UpdateTitle(void)
 		}
 
 		// 消す
-		if (GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) || GetKeyboardTrigger(DIK_ESCAPE)) {
+		if (GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) || GetKeyboardTrigger(DIK_ESCAPE) || IsButtonTriggered(0, BUTTON_A) || IsButtonTriggered(0, BUTTON_B)) {
 			// 決定音
 			PlaySound(SOUND_LABEL_SE_CANCEL);
 			// CREDITSを消す
@@ -226,17 +226,17 @@ void UpdateTitle(void)
 	//////////////////////////////////////////////////////////////////////////////
 	// ボタン入力処理
 	//////////////////////////////////////////////////////////////////////////////
-	if (GetKeyboardTrigger(DIK_DOWN)) {
+	if (GetKeyboardTrigger(DIK_DOWN) || IsButtonTriggered(0, BUTTON_DOWN)) {
 		g_ButtonNow = (g_ButtonNow + 1) % TITLE_BUTTON_MAX;
 		// ボタン移動音
 		PlaySound(SOUND_LABEL_SE_BUTTON_MOVE);
 	}
-	if (GetKeyboardTrigger(DIK_UP)) {
+	if (GetKeyboardTrigger(DIK_UP) || IsButtonTriggered(0, BUTTON_UP)) {
 		g_ButtonNow = (g_ButtonNow + TITLE_BUTTON_MAX - 1) % TITLE_BUTTON_MAX;
 		// ボタン移動音
 		PlaySound(SOUND_LABEL_SE_BUTTON_MOVE);
 	}
-	if (GetKeyboardTrigger(DIK_ESCAPE)) {
+	if (GetKeyboardTrigger(DIK_ESCAPE) || IsButtonTriggered(0, BUTTON_X)) {
 		// EXIT画面を表示
 		SetExit(TRUE);
 		// 決定音
@@ -248,7 +248,7 @@ void UpdateTitle(void)
 	//////////////////////////////////////////////////////////////////////////////
 	// 画面遷移
 	//////////////////////////////////////////////////////////////////////////////
-	if (GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE)) {
+	if (GetKeyboardTrigger(DIK_RETURN) || GetKeyboardTrigger(DIK_SPACE) || IsButtonTriggered(0, BUTTON_A)) {
 		switch (g_ButtonNow) {
 
 		case TITLE_START_GAME:
