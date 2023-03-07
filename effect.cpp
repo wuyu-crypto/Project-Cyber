@@ -8,6 +8,7 @@
 #include "bg.h"
 #include "player.h"
 #include "sound.h"
+#include "input.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -210,6 +211,7 @@ static EFFECT_DATA g_EffectData[EFFECT_TYPE_MAX] = {
 static BOOL		g_Load = FALSE;										// 初期化を行ったかのフラグ
 static EFFECT	g_Effect[EFFECT_MAX];								// エフェクト構造体
 
+static bool isPadActive;
 //=============================================================================
 // 初期化処理
 //=============================================================================
@@ -266,7 +268,7 @@ HRESULT InitEffect(void)
 
 
 
-
+	isPadActive = IsPadActive();
 
 
 
