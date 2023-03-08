@@ -71,6 +71,7 @@ static int g_BossTime;
 ///////////////////////////////////////////////////////////////////////////////
 // ウェーブデータテーブル
 ///////////////////////////////////////////////////////////////////////////////
+#ifndef DEMO	// 通常版
 static WAVE_DATA g_WaveTbl[] = {
 
 	  // 開始時間	// スポーン座標		// エネミータイプ	// スピード
@@ -171,8 +172,34 @@ static WAVE_DATA g_WaveTbl[] = {
 	{ 123,			pos[9],			ENEMY_TYPE_BOSS,	speed[0], },
 
 };
+#else
+static WAVE_DATA g_WaveTbl[] = {
+
+	// 開始時間	// スポーン座標		// エネミータイプ	// スピード
+
+	// 00だけ
+	{ 3,			pos[2],			ENEMY_TYPE00,		speed[3],	},
+	{ 3,			pos[4],			ENEMY_TYPE00,		speed[3],	},
+	{ 5,			pos[3],			ENEMY_TYPE00,		speed[3],	},
+	{ 5,			pos[5],			ENEMY_TYPE00,		speed[3],	},
+	{ 7,			pos[4],			ENEMY_TYPE00,		speed[3],	},
+	{ 7,			pos[6],			ENEMY_TYPE00,		speed[3],	},
+
+	{ 10,			pos[4],			ENEMY_TYPE01,		speed[2],	},
+	{ 12,			pos[2],			ENEMY_TYPE01,		speed[1],	},
+	{ 12,			pos[6],			ENEMY_TYPE01,		speed[1],	},
+
+	{ 16,			pos[4],			ENEMY_TYPE02,		speed[2],	},
+	{ 19,			pos[2],			ENEMY_TYPE02,		speed[2],	},
+	{ 19,			pos[6],			ENEMY_TYPE02,		speed[2],	},
+	{ 23,			pos[0],			ENEMY_TYPE02,		speed[2],	},
+	{ 23,			pos[8],			ENEMY_TYPE02,		speed[2],	},
 
 
+	{ 30,			pos[9],			ENEMY_TYPE_BOSS,	speed[0], },
+
+};
+#endif
 
 static WAVE_DATA* g_WaveTblAdr = g_WaveTbl;
 

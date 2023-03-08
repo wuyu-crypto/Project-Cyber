@@ -117,7 +117,7 @@ static ENEMY_DATA g_EnemyData[ENEMY_TYPE_MAX] = {
 		ENEMY_SHOOT_TYPE_STRAIGHT, 60,					// 発射パターン, 弾発射ウェイト
 		XMINT2(2, 1), 2, 4,								// 分割数, パターン数, ウェイト
 		160, 80,										// 当たり判定
-		5, 5000, 500,									// HP, 撃破得点, 命中得点
+		4, 5000, 500,									// HP, 撃破得点, 命中得点
 		10,												// ドロップ率
 	},
 
@@ -143,7 +143,7 @@ static ENEMY_DATA g_EnemyData[ENEMY_TYPE_MAX] = {
 		ENEMY_SHOOT_TYPE_AIM, 60,
 		XMINT2(2, 1), 2, 4,
 		150, 150,
-		10, 10000, 1000,
+		7, 10000, 1000,
 		40,
 	},
 
@@ -154,7 +154,7 @@ static ENEMY_DATA g_EnemyData[ENEMY_TYPE_MAX] = {
 		ENEMY_SHOOT_TYPE_BARRAGE00, 60,
 		XMINT2(2, 1), 2, 4,
 		280, 280,
-		20, 30000, 1500,
+		12, 30000, 1500,
 		80,
 	},
 

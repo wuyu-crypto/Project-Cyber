@@ -16,7 +16,11 @@
 //*****************************************************************************
 #define ENEMY_MAX		20				// エネミーのMax人数
 
+#ifndef DEMO
 #define	BOSS_HP_MAX		1000.0f			// ボスHP
+#else
+#define BOSS_HP_MAX		300.0f
+#endif
 
 // エネミータイプ番号
 enum {

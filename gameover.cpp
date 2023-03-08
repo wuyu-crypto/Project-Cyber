@@ -109,7 +109,7 @@ void UninitGameover(void)
 void UpdateGameover(void)
 {
 
-	if (GetKeyboardTrigger(DIK_SPACE) || IsButtonTriggered(0)) {
+	if (GetKeyboardTrigger(DIK_SPACE) || IsButtonTriggered(0, BUTTON_A) || IsButtonTriggered(0, BUTTON_B) || IsButtonTriggered(0, BUTTON_X) || IsButtonTriggered(0, BUTTON_Y)) {
 		// SEをプレイ
 		PlaySound(SOUND_LABEL_SE_SELECT000);
 		// モードチェンジ

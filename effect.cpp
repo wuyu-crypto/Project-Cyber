@@ -79,13 +79,21 @@ static EFFECT_DATA g_EffectData[EFFECT_TYPE_MAX] = {
 		EFFECT_LAYER_FRONT_OF_PLAYER,
 	},
 
+	//{	// 旧爆発エフェクト
+	//	"data/TEXTURE/bomb.png",
+	//	XMINT2(200, 200), DRAW_DEFAULT, 1.0f,
+	//	EFFECT_TRACK_NONE, XMFLOAT3(0.0f, 0.0f, 0.0f),
+	//	FALSE,
+	//	XMINT2(4, 4), 16, WAIT_DEFAULT,
+	//	EFFECT_LAYER_FRONT_OF_PLAYER,
+	//},
 
-	{ 
-		"data/TEXTURE/bomb.png", 
-		XMINT2(200, 200), DRAW_DEFAULT, 1.0f,
+	{	// 新爆発エフェクト
+		"data/TEXTURE/explode.png",
+		XMINT2(250, 250), DRAW_DEFAULT, 1.0f,
 		EFFECT_TRACK_NONE, XMFLOAT3(0.0f, 0.0f, 0.0f),
 		FALSE,
-		XMINT2(4, 4), 16, WAIT_DEFAULT,
+		XMINT2(3, 3), 9, 4,
 		EFFECT_LAYER_FRONT_OF_PLAYER,
 	},
 
@@ -163,11 +171,11 @@ static EFFECT_DATA g_EffectData[EFFECT_TYPE_MAX] = {
 
 
 	{	// ボス撃沈爆発(普通の爆発よりデカい)
-		"data/TEXTURE/bomb.png",
+		"data/TEXTURE/explode.png",
 		XMINT2(500, 500), DRAW_DEFAULT, 1.0f,
 		EFFECT_TRACK_NONE, XMFLOAT3(0.0f, 0.0f, 0.0f),
 		FALSE,
-		XMINT2(4, 4), 16, WAIT_DEFAULT,
+		XMINT2(3, 3), 9, 4,
 		EFFECT_LAYER_FRONT_OF_PLAYER,
 	},
 
