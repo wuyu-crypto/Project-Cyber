@@ -195,8 +195,7 @@ static WAVE_DATA g_WaveTbl[] = {
 	{ 23,			pos[0],			ENEMY_TYPE02,		speed[2],	},
 	{ 23,			pos[8],			ENEMY_TYPE02,		speed[2],	},
 
-
-	{ 30,			pos[9],			ENEMY_TYPE_BOSS,	speed[0], },
+	{ 35,			pos[9],			ENEMY_TYPE_BOSS,	speed[0],	},
 
 };
 #endif
