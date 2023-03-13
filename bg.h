@@ -37,5 +37,3 @@ void UpdateBG(void);
 void DrawBG(void);
 
 BG* GetBG(void);
-
-void SetVibration(float frame, float roop, float scale);

@@ -75,7 +75,7 @@ static int		g_BossActionFrame[BOSS_MAX] = {		// ボス各行動の実行フレーム数
 
 	0,
 
-	480,	// 撃沈アニメ時間
+	300,	// 撃沈アニメ時間
 };
 
 static XMFLOAT3 g_BossSpawningSpeed;				// 最大登場速度

@@ -135,7 +135,14 @@ HRESULT InitPlayer(void)
 		g_Player[i].dirH = CHAR_DIR_FORWARD;									// デフォルトは前向き
 		g_Player[i].animPattern = g_Player[i].dirH * TEXTURE_PATTERN_DIVIDE_X;
 
-		g_Player[i].hp = HP_START;
+		// HP初期化
+		if (PLAYER_HP_MAX < HP_START) {	// HP上限が低い場合はHP上限を優先
+			g_Player[i].hp = PLAYER_HP_MAX;
+		}
+		else {
+			g_Player[i].hp = HP_START;
+		}
+
 		g_Player[i].colliderW = PLAYER_COLLIDER_WIDTH;
 		g_Player[i].colliderH = PLAYER_COLLIDER_HEIGHT;
 		g_Player[i].isDamaged = FALSE;

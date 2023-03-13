@@ -16,7 +16,9 @@
 //*****************************************************************************
 #define			TEXTURE_MAX			ITEM_TYPE_MAX
 
-#define			HEAL_NUM			3						// 回復量
+#define			HEAL_NUM			2						// 回復量
+
+#define			SPEED_RANGE			5.0f					// アイテム移動の上下のブレ幅
 
 //*****************************************************************************
 // グローバル変数
@@ -32,7 +34,7 @@ static ITEM_DATA g_ItemData[ITEM_TYPE_MAX] = {
 	{
 		"data/TEXTURE/heart.png",								// テクスチャ名
 		80.0f, 80.0f,											// キャラサイズ
-		XMFLOAT3(-0.5f, 1.0f, 0.0f),							// スピード
+		XMFLOAT3(-5.0f, 0.0f, 0.0f),							// スピード
 		1, 1, 1, 4,												// 分割数, パターン数, ウェイト
 		80, 80,													// 当たり判定
 
@@ -41,7 +43,7 @@ static ITEM_DATA g_ItemData[ITEM_TYPE_MAX] = {
 	{
 		"data/TEXTURE/power.png",								// テクスチャ名
 		80.0f, 80.0f,											// キャラサイズ
-		XMFLOAT3(-0.5f, 1.0f, 0.0f),							// スピード
+		XMFLOAT3(-5.0f, 0.0f, 0.0f),							// スピード
 		1, 1, 1, 4,												// 分割数, パターン数, ウェイト
 		80, 80,													// 当たり判定
 
@@ -260,6 +262,9 @@ void SetItem(int type, XMFLOAT3 pos) {
 		g_Item[i].type = type;
 
 		g_Item[i].speed = g_ItemData[type].speed;
+		// 上下ブレを付ける
+		g_Item[i].speed.y = rand() / RAND_MAX * SPEED_RANGE; 
+
 
 		g_Item[i].animFrameCnt = 0;
 		g_Item[i].animPattern = 0;

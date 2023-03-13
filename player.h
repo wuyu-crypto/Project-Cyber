@@ -16,7 +16,7 @@
 //*****************************************************************************
 #define		PLAYER_MAX				1			// プレイヤーのMax人数
 
-#define		PLAYER_HP_MAX			10			// HP上限
+#define		PLAYER_HP_MAX			8			// HP上限
 
 enum
 {

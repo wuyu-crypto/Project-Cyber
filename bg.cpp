@@ -13,16 +13,21 @@
 #define TEXTURE_HEIGHT				(SCREEN_HEIGHT)			//
 #define TEXTURE_MAX					(1)				// テクスチャの数
 
+#define	VIBRATION
+#undef VIBRATION
+
+#ifdef VIBRATION
 #define	VIBRATION_FRAME_NUM			120.0f			// 振動1周のフレーム数
 #define	VIBRATION_ROOP				5.0f			// 振動のループ数
 #define	VIBRATION_SCALE				-100.0f			// 振動の強さ(ズレの長さ)
-
+#endif
 
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************
-
-
+#ifdef VIBRATION
+void SetVibration(float frame, float roop, float scale);
+#endif
 //*****************************************************************************
 // グローバル変数
 //*****************************************************************************
@@ -36,7 +41,7 @@ static char *g_TexturName[TEXTURE_MAX] = {
 static BOOL	g_Load = FALSE;			// 初期化を行ったかのフラグ
 static BG	g_BG;
 
-
+#ifdef VIBRATION
 static BOOL				g_isVibrationAllowed;		// 振動を許可か？
 static BOOL				g_isVibrating;				// 振動フラグ
 
@@ -47,7 +52,7 @@ static float			g_VibrationRoopCnt;				// ループカウンタ
 static float			g_VibrationFrameNum;			// 振動1周のフレーム数
 static float			g_VibrationRoopNum;				// 振動のループ数
 static float			g_VibrationScale;				// 振動の強さ
-
+#endif
 
 
 //=============================================================================
@@ -89,11 +94,11 @@ HRESULT InitBG(void)
 
 	g_BG.scrl = 0;
 
-
+#ifdef VIBRATION
 	// 振動の初期化
 	g_isVibrationAllowed = TRUE;
 	g_isVibrating = FALSE;
-
+#endif
 
 
 
@@ -132,10 +137,7 @@ void UninitBG(void)
 void UpdateBG(void)
 {
 
-	//////////////////////////////////////////////////////////////////////////////
-	// 振動処理
-	//////////////////////////////////////////////////////////////////////////////
-
+#ifdef VIBRATION
 	// 振動が許可されているか？
 	if (g_isVibrationAllowed == TRUE) {
 
@@ -186,11 +188,9 @@ void UpdateBG(void)
 
 	}
 
+#endif
 
-
-	//////////////////////////////////////////////////////////////////////////////
 	// スクロール
-	//////////////////////////////////////////////////////////////////////////////
 	g_BG.scrl += 0.0005f;
 
 
@@ -245,10 +245,9 @@ BG* GetBG(void)
 	return &g_BG;
 }
 
+#ifdef VIBRATION
 
-//=============================================================================
 // 振動エフェクト
-//=============================================================================
 void SetVibration(float frame, float roop, float scale) {
 
 	// 振動を有効化
@@ -280,3 +279,5 @@ void SetVibration(float frame, float roop, float scale) {
 	g_VibrationFrameCnt = 0.0f;
 	g_VibrationRoopCnt = 0.0f;
 }
+
+#endif
