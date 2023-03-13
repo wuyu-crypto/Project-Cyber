@@ -34,7 +34,7 @@ static ITEM_DATA g_ItemData[ITEM_TYPE_MAX] = {
 	{
 		"data/TEXTURE/heart.png",								// テクスチャ名
 		80.0f, 80.0f,											// キャラサイズ
-		XMFLOAT3(-5.0f, 0.0f, 0.0f),							// スピード
+		XMFLOAT3(-3.8f, 0.0f, 0.0f),							// スピード
 		1, 1, 1, 4,												// 分割数, パターン数, ウェイト
 		80, 80,													// 当たり判定
 
@@ -43,7 +43,7 @@ static ITEM_DATA g_ItemData[ITEM_TYPE_MAX] = {
 	{
 		"data/TEXTURE/power.png",								// テクスチャ名
 		80.0f, 80.0f,											// キャラサイズ
-		XMFLOAT3(-5.0f, 0.0f, 0.0f),							// スピード
+		XMFLOAT3(-3.8f, 0.0f, 0.0f),							// スピード
 		1, 1, 1, 4,												// 分割数, パターン数, ウェイト
 		80, 80,													// 当たり判定
 
